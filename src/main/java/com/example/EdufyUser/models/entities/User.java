@@ -1,11 +1,11 @@
-package com.example.EdufyUser.entities;
+package com.example.EdufyUser.models.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 // ED-138-SJ
 @Entity
-@Table(name = "user")
+@Table(name = "edufy_user")
 public class User {
 
 // Attributes ----------------------------------------------------------------------------------------------------------
