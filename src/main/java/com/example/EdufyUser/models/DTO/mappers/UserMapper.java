@@ -22,4 +22,16 @@ public class UserMapper {
         userDTO.setUuid(user.getUuid());
         return userDTO;
     }
+
+    //ED-88-AA
+    public static UserDTO toFullDTO(User user) {
+        UserDTO dto = new UserDTO();
+        dto.setId(user.getId());
+        dto.setUuid(user.getUuid());
+        dto.setUsername(user.getUsername());
+        dto.setEmail(user.getEmail());
+        dto.setCreator(user.isCreator());
+        dto.setActive(user.isActive());
+        return dto;
+    }
 }

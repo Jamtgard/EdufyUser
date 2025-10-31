@@ -30,4 +30,12 @@ public class UserServiceImpl implements UserService {
         }
         return UserMapper.toDTOWithIdAndUUID(findUser.get());
     }
+
+    //ED-88-AA
+    @Override
+    public UserDTO getUserBySUB(String sub) {
+        User user = userRepository.findByUuid(sub).orElseThrow(() ->
+                new ResourceNotFoundException("User","sub",sub));
+        return UserMapper.toFullDTO(user);
+    }
 }
