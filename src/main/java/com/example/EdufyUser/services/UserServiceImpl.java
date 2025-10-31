@@ -1,5 +1,6 @@
 package com.example.EdufyUser.services;
 
+import com.example.EdufyUser.exceptions.ContentNotFoundException;
 import com.example.EdufyUser.exceptions.ResourceNotFoundException;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.DTO.mappers.UserMapper;
@@ -8,6 +9,7 @@ import com.example.EdufyUser.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +31,14 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("User","id",id);
         }
         return UserMapper.toDTOWithIdAndUUID(findUser.get());
+    }
+
+    @Override
+    public List<UserDTO> getAllUsers() {
+        List<User> allUsers = userRepository.findAll();
+        if(allUsers.isEmpty()){
+            throw new ContentNotFoundException("No users found");
+        }
+        return UserMapper.toDTOWithIdAndUUIDList(allUsers);
     }
 }
