@@ -30,7 +30,7 @@ public class AdminController {
     }
 
     //ED-88-AA
-    @GetMapping("/getuserbysub/{sub}")
+    @GetMapping("/user-sub/{sub}")
     public ResponseEntity<UserDTO> getUserBySub(@PathVariable String sub) {
         return ResponseEntity.ok(userService.getUserBySUB(sub));
     }

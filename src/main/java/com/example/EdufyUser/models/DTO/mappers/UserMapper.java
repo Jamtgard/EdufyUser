@@ -2,6 +2,7 @@ package com.example.EdufyUser.models.DTO.mappers;
 
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.entities.User;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserMapper {
         UserDTO userDTO = toDTONoId(user);
         userDTO.setId(user.getId());
         userDTO.setUuid(user.getUuid());
-        userDTO.setActive(String.valueOf(user.isActive()));
+        userDTO.setActive(user.isActive());
         return userDTO;
     }
 

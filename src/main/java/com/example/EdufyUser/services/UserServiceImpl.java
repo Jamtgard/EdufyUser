@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
             return UserMapper.toDTOWithIdAndUUIDList(allUsers);
 
         }else {
-            allUsers = userRepository.findAllByIsActiveTrue();
+            allUsers = userRepository.findAllByActiveTrue();
             listUserEmpty(allUsers);
             return UserMapper.toDTOWNoIdList(allUsers);
         }

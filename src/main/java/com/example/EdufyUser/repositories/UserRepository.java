@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    List<User> findAllByIsActiveTrue();//ED-87-SA
+    List<User> findAllByActiveTrue();//ED-87-SA
 
     //ED-88-AA
     Optional<User> findByUuid(String sub);
