@@ -14,7 +14,7 @@ public class UserMapper {
         UserDTO userDTO = new UserDTO();
         userDTO.setUsername(user.getUsername());
         userDTO.setEmail(user.getEmail());
-        userDTO.setCreator(userDTO.isCreator());
+        userDTO.setCreator(user.isCreator());
         return userDTO;
     }
 
@@ -23,6 +23,7 @@ public class UserMapper {
         UserDTO userDTO = toDTONoId(user);
         userDTO.setId(user.getId());
         userDTO.setUuid(user.getUuid());
+        userDTO.setActive(String.valueOf(user.isActive()));
         return userDTO;
     }
 
