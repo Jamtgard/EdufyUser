@@ -1,3 +1,4 @@
+-- ED-259-SA
 INSERT INTO edufy_user (id, user_sub, user_username, user_email, user_creator, user_active) VALUES
 (1,'00000000-0000-0000-0001-000000000001', 'Sunstar', 'emil.beckstom@gmail.com',false, true),
 (2, '00000000-0000-0000-0000-000000000002', 'Neon Pulse', 'mia.nickleson@gmail.com', true, true),
