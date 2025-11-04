@@ -4,6 +4,7 @@ import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,8 @@ public class CommonController {
     }
 
     //ED-87-SA
-    @GetMapping("/getallusers")
-    public ResponseEntity<List<UserDTO>> getAllUsers() {
-        return ResponseEntity.ok(userService.getAllUsers());
+    @GetMapping("/all-users")
+    public ResponseEntity<List<UserDTO>> getAllUsers(Authentication authentication) {
+        return ResponseEntity.ok(userService.getAllUsers(authentication));
     }
 }
