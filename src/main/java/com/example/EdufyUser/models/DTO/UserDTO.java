@@ -10,16 +10,18 @@ public class UserDTO {
     private String username;
     private String email;
     private boolean creator;
+    private String active;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String uuid, String username, String email, boolean creator) {
+    public UserDTO(Long id, String uuid, String username, String email, boolean creator, String active) {
         this.id = id;
         this.uuid = uuid;
         this.username = username;
         this.email = email;
         this.creator = creator;
+        this.active = active;
     }
 
     public Long getId() {
@@ -62,6 +64,14 @@ public class UserDTO {
         this.creator = creator;
     }
 
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -70,6 +80,7 @@ public class UserDTO {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", creator=" + creator +
+                ", active=" + active +
                 '}';
     }
 }

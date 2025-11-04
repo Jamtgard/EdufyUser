@@ -22,7 +22,7 @@ public class AdminController {
     }
 
     //ED-86-SA
-    @GetMapping("/getuserbyid/{id}")
+    @GetMapping("/user-id/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
