@@ -17,14 +17,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+//ED-168-SA
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
 
+    //ED-168-SA
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
+    //ED-168-SA
     @Value("${edufy.user.client.id}")
     private String userClientId;
 
+    //ED-168-SA
     @Override
     public AbstractAuthenticationToken convert(@Nonnull Jwt source) {
         Collection<GrantedAuthority> authorities = Stream.concat(
@@ -36,6 +40,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
         return new JwtAuthenticationToken(source, authorities);
     }
 
+    //ED-168-SA
     private Collection<? extends GrantedAuthority> extractRoles(Jwt jwt) {
         Map<String, Object> resourceAccess;
         Map<String, Object> resources;
