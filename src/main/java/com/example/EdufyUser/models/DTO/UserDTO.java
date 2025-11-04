@@ -11,7 +11,7 @@ public class UserDTO {
     private String email;
     private boolean creator;
 
-    @JsonInclude(JsonInclude.Include.NON_DEFAULT) //ED-88-AA
+    @JsonInclude(JsonInclude.Include.NON_NULL) //ED-88-AA
     private Boolean active;
 
     public UserDTO() {
