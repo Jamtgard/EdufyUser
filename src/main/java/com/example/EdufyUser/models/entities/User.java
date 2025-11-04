@@ -90,8 +90,10 @@ public class User {
     public boolean isCreator() {return creator;}
     public void setCreator(boolean creator) {this.creator = creator;}
 
-    public boolean isActive() {return active;}
-    public void setActive(boolean active) {this.active = active;}
+    public boolean isActive() {
+        return active;}
+    public void setActive(boolean active) {
+        this.active = active;}
 
 // toString ------------------------------------------------------------------------------------------------------------
 

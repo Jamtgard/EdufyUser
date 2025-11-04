@@ -10,12 +10,14 @@ public class UserDTO {
     private String username;
     private String email;
     private boolean creator;
-    private String active;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL) //ED-88-AA
+    private Boolean active;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String uuid, String username, String email, boolean creator, String active) {
+    public UserDTO(Long id, String uuid, String username, String email, boolean creator, Boolean active) {
         this.id = id;
         this.uuid = uuid;
         this.username = username;
@@ -64,11 +66,11 @@ public class UserDTO {
         this.creator = creator;
     }
 
-    public String getActive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

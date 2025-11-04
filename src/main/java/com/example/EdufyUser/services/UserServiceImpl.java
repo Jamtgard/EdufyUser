@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
             return UserMapper.toDTOWithIdAndUUIDList(allUsers);
 
         }else {
-            allUsers = userRepository.findAllByIsActiveTrue();
+            allUsers = userRepository.findAllByActiveTrue();
             listUserEmpty(allUsers);
             return UserMapper.toDTOWNoIdList(allUsers);
         }
@@ -57,5 +57,13 @@ public class UserServiceImpl implements UserService {
         if(list.isEmpty()){
             throw new ContentNotFoundException("No users found");
         }
+    }
+
+    //ED-88-AA
+    @Override
+    public UserDTO getUserBySUB(String sub) {
+        User user = userRepository.findByUuid(sub).orElseThrow(() ->
+                new ResourceNotFoundException("User","sub",sub));
+        return UserMapper.toFullDTO(user);
     }
 }
