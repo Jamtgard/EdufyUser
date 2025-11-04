@@ -1,4 +1,4 @@
-package com.example.EdufyUser.entities;
+package com.example.EdufyUser.models.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
