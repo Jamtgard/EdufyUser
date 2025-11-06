@@ -6,13 +6,16 @@ import com.example.EdufyUser.exceptions.ResourceNotFoundException;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.DTO.mappers.UserMapper;
 import com.example.EdufyUser.models.entities.User;
+import com.example.EdufyUser.models.enums.MediaType;
 import com.example.EdufyUser.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -65,5 +68,21 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUuid(sub).orElseThrow(() ->
                 new ResourceNotFoundException("User","sub",sub));
         return UserMapper.toFullDTO(user);
+    }
+
+    @Override
+    public Set<Long> getUserHistoryByMediaType(MediaType mediaType, Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() ->
+                new ResourceNotFoundException("User","id",userId));
+
+        switch (mediaType){
+            case SONG -> {return new HashSet<>(userRepository.findSongHistoryIdsByUserId(user.getId())); }
+            case ALBUM -> {return new HashSet<>(userRepository.findAlbumHistoryIdsByUserId(user.getId())); }
+            case VIDEO_CLIP -> {return new HashSet<>(userRepository.findVideoClipHistoryIdsByUserId(user.getId())); }
+            case VIDEO_PLAYLIST -> {return new HashSet<>(userRepository.findVideoPlaylistHistoryIdsByUserId(user.getId())); }
+            case POD_EPISODE -> {return new HashSet<>(userRepository.findPodEpisodeHistoryIdsByUserId(user.getId())); }
+            case POD_SEASON -> {return new HashSet<>(userRepository.findPodSeasonHistoryIdsByUserId(user.getId())); }
+            default ->  {return Set.of();}
+        }
     }
 }
