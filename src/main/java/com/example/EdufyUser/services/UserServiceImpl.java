@@ -70,19 +70,4 @@ public class UserServiceImpl implements UserService {
         return UserMapper.toFullDTO(user);
     }
 
-    @Override
-    public Set<Long> getUserHistoryByMediaType(MediaType mediaType, Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() ->
-                new ResourceNotFoundException("User","id",userId));
-
-        switch (mediaType){
-            case SONG -> {return new HashSet<>(userRepository.findSongHistoryIdsByUserId(user.getId())); }
-            case ALBUM -> {return new HashSet<>(userRepository.findAlbumHistoryIdsByUserId(user.getId())); }
-            case VIDEO_CLIP -> {return new HashSet<>(userRepository.findVideoClipHistoryIdsByUserId(user.getId())); }
-            case VIDEO_PLAYLIST -> {return new HashSet<>(userRepository.findVideoPlaylistHistoryIdsByUserId(user.getId())); }
-            case POD_EPISODE -> {return new HashSet<>(userRepository.findPodEpisodeHistoryIdsByUserId(user.getId())); }
-            case POD_SEASON -> {return new HashSet<>(userRepository.findPodSeasonHistoryIdsByUserId(user.getId())); }
-            default ->  {return Set.of();}
-        }
-    }
 }
