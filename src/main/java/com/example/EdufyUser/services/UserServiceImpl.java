@@ -6,16 +6,14 @@ import com.example.EdufyUser.exceptions.ResourceNotFoundException;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.DTO.mappers.UserMapper;
 import com.example.EdufyUser.models.entities.User;
-import com.example.EdufyUser.models.enums.MediaType;
 import com.example.EdufyUser.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
