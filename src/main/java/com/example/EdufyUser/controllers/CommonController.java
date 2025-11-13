@@ -4,6 +4,7 @@ import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 //ED-87-SA
 @RestController
 @RequestMapping("/api/v1/user")
+@PreAuthorize("hasAnyRole('user_admin', 'edufy_realm_admin', 'user_user')")
 public class CommonController {
 
     private UserService userService;

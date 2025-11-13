@@ -37,6 +37,8 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
                 .collect(Collectors.toSet()
         );
 
+        System.out.println("Authorities: " + authorities);
+
         return new JwtAuthenticationToken(source, authorities);
     }
 
