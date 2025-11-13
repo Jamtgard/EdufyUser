@@ -3,6 +3,7 @@ package com.example.EdufyUser.services;
 import com.example.EdufyUser.convertes.Roles;
 import com.example.EdufyUser.exceptions.ContentNotFoundException;
 import com.example.EdufyUser.exceptions.ResourceNotFoundException;
+import com.example.EdufyUser.models.DTO.CreateUserDTO;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.DTO.mappers.UserMapper;
 import com.example.EdufyUser.models.entities.User;
@@ -66,6 +67,12 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUuid(sub).orElseThrow(() ->
                 new ResourceNotFoundException("User","sub",sub));
         return UserMapper.toFullDTO(user);
+    }
+
+    //ED-239-AWS
+    @Override
+    public UserDTO createUserAsAdmin(CreateUserDTO createUserDTO) {
+        return null;
     }
 
 }

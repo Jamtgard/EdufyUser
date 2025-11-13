@@ -1,5 +1,6 @@
 package com.example.EdufyUser.services;
 
+import com.example.EdufyUser.models.DTO.CreateUserDTO;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import org.springframework.security.core.Authentication;
 
@@ -12,5 +13,8 @@ public interface UserService {
     List<UserDTO> getAllUsers(Authentication authentication);//ED-87-SA
 
     UserDTO getUserBySUB(String sub); //ED-88-AA
+
+//ED-239-AWS
+    UserDTO createUserAsAdmin(CreateUserDTO createUserDTO);
 
 }
