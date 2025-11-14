@@ -20,11 +20,13 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final KeycloakAdminService keycloakAdminService;
 
     //ED-86-SA
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, KeycloakAdminService keycloakAdminService) {
         this.userRepository = userRepository;
+        this.keycloakAdminService = keycloakAdminService;
     }
 
     //ED-86-SA
@@ -72,7 +74,21 @@ public class UserServiceImpl implements UserService {
     //ED-239-AWS
     @Override
     public UserDTO createUserAsAdmin(CreateUserDTO createUserDTO) {
-        return null;
+        String keycloakId = keycloakAdminService.createUserAndAssignRole(createUserDTO);
+
+        boolean active = createUserDTO.getActive() == null || createUserDTO.getActive();
+
+        User user = new User(
+                keycloakId,
+                createUserDTO.getUsername(),
+                createUserDTO.getEmail(),
+                createUserDTO.isCreator(),
+                active
+        );
+
+        User savedUser = userRepository.save(user);
+
+        return UserMapper.toDTOWithIdAndUUID(savedUser);
     }
 
 }
