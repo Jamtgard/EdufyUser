@@ -11,7 +11,7 @@ public class User {
 // Attributes ----------------------------------------------------------------------------------------------------------
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     //ED-239-AWS Changed from GenerationType.AUTO to -> IDENTITY
     private Long id;
 
     @Column(name = "user_sub",unique = true, nullable = false)

@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
     //ED-239-AWS
     @Override
     public UserDTO createUserAsAdmin(CreateUserDTO createUserDTO) {
-        String keycloakId = keycloakAdminService.createUserAndAssignRole(createUserDTO);
+        String keycloakId = keycloakAdminService.createUserAndAssignRoles(createUserDTO);
 
         boolean active = createUserDTO.getActive() == null || createUserDTO.getActive();
 
