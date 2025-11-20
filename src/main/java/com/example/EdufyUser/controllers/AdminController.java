@@ -1,14 +1,12 @@
 package com.example.EdufyUser.controllers;
 
+import com.example.EdufyUser.models.DTO.CreateUserDTO;
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -33,5 +31,12 @@ public class AdminController {
     @GetMapping("/user-sub/{sub}")
     public ResponseEntity<UserDTO> getUserBySub(@PathVariable String sub) {
         return ResponseEntity.ok(userService.getUserBySUB(sub));
+    }
+
+    //ED-239-AWS
+    @PostMapping("/admin/create-user")
+    public ResponseEntity<UserDTO> createUserAsAdmin(@RequestBody CreateUserDTO dto){
+        UserDTO created = userService.createUserAsAdmin(dto);
+        return ResponseEntity.status(201).body(created);
     }
 }
