@@ -23,10 +23,15 @@ public class ClientController {
         this.userService = userService;
     }
 
+    //ED-340-AA
     @GetMapping("/user-sub/{sub}/clientcall")
     public ResponseEntity<UserDTO> getUserBySub(@PathVariable String sub, Authentication auth) {
         return ResponseEntity.ok(userService.getUserBySUB(sub, auth));
     }
 
-
+    //ED-346-AA
+    @GetMapping("/user-id/{id}/clientcall")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id, Authentication auth) {
+        return ResponseEntity.ok(userService.getUserById(id, auth));
+    }
 }

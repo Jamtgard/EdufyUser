@@ -24,8 +24,8 @@ public class AdminController {
 
     //ED-86-SA
     @GetMapping("/user-id/{id}")
-    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
-        return ResponseEntity.ok(userService.getUserById(id));
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id, Authentication auth) {
+        return ResponseEntity.ok(userService.getUserById(id, auth));
     }
 
     //ED-88-AA
