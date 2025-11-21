@@ -1,14 +1,15 @@
 package com.example.EdufyUser.controllers;
 
 import com.example.EdufyUser.services.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
 
 //ED-89-AA
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/user")
+@PreAuthorize("hasRole('microservice_access')") //ED-340-AA
 public class ClientController {
 
     private final UserService userService;

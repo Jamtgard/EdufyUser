@@ -9,7 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/user")
 @PreAuthorize("hasAnyRole('user_admin', 'edufy_realm_admin')")
 public class AdminController {
 
