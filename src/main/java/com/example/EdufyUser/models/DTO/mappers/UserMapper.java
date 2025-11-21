@@ -57,4 +57,11 @@ public class UserMapper {
         dto.setActive(user.isActive());
         return dto;
     }
+
+    //ED-340-AA
+    public static UserDTO toDTOClientCallJustSUB(User user) {
+        UserDTO dto = new UserDTO();
+        dto.setUuid(user.getUuid());
+        return dto;
+    }
 }

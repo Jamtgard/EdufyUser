@@ -12,7 +12,7 @@ public interface UserService {
     UserDTO getUserById(Long id);//ED-86-SA
     List<UserDTO> getAllUsers(Authentication authentication);//ED-87-SA
 
-    UserDTO getUserBySUB(String sub); //ED-88-AA
+    UserDTO getUserBySUB(String sub, Authentication auth); //ED-88-AA //ED-340-AA
 
 //ED-239-AWS
     UserDTO createUserAsAdmin(CreateUserDTO createUserDTO);

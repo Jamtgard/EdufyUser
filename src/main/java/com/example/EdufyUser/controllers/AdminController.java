@@ -6,6 +6,7 @@ import com.example.EdufyUser.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,8 +30,8 @@ public class AdminController {
 
     //ED-88-AA
     @GetMapping("/user-sub/{sub}")
-    public ResponseEntity<UserDTO> getUserBySub(@PathVariable String sub) {
-        return ResponseEntity.ok(userService.getUserBySUB(sub));
+    public ResponseEntity<UserDTO> getUserBySub(@PathVariable String sub, Authentication authentication) {
+        return ResponseEntity.ok(userService.getUserBySUB(sub, authentication));
     }
 
     //ED-239-AWS
