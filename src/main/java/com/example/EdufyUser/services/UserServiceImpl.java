@@ -31,11 +31,18 @@ public class UserServiceImpl implements UserService {
 
     //ED-86-SA
     @Override
-    public UserDTO getUserById(Long id) {
+    public UserDTO getUserById(Long id, Authentication auth) {
         Optional<User> findUser = userRepository.findById(id);
         if(findUser.isEmpty()){
             throw new ResourceNotFoundException("User","id",id);
         }
+
+        //ED-346-AA
+        if (auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_microservice_access"))) {
+            return UserMapper.toDTOClientCallJustId(findUser.get());
+        }
+
         return UserMapper.toDTOWithIdAndUUID(findUser.get());
     }
 

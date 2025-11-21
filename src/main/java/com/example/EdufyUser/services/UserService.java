@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDTO getUserById(Long id);//ED-86-SA
+    UserDTO getUserById(Long id, Authentication auth);//ED-86-SA //ED-346-AA
     List<UserDTO> getAllUsers(Authentication authentication);//ED-87-SA
 
     UserDTO getUserBySUB(String sub, Authentication auth); //ED-88-AA //ED-340-AA

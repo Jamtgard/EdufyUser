@@ -64,4 +64,11 @@ public class UserMapper {
         dto.setUuid(user.getUuid());
         return dto;
     }
+
+    //ED-346-AA
+    public static UserDTO toDTOClientCallJustId(User user) {
+        UserDTO dto = new UserDTO();
+        dto.setId(user.getId());
+        return dto;
+    }
 }
