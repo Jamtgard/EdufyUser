@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
         if (auth.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_microservice_access"))) {
-            return UserMapper.toDTOClientCallJustSUB(user);
+            return UserMapper.toDTOClientCallJustId(user);
         }
         return UserMapper.toFullDTO(user);
     }
