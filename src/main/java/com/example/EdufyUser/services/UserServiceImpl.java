@@ -65,9 +65,14 @@ public class UserServiceImpl implements UserService {
 
     //ED-88-AA
     @Override
-    public UserDTO getUserBySUB(String sub) {
+    public UserDTO getUserBySUB(String sub, Authentication auth) {
         User user = userRepository.findByUuid(sub).orElseThrow(() ->
                 new ResourceNotFoundException("User","sub",sub));
+
+        if (auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_microservice_access"))) {
+            return UserMapper.toDTOClientCallJustSUB(user);
+        }
         return UserMapper.toFullDTO(user);
     }
 

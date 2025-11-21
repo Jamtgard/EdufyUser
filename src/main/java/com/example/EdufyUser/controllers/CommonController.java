@@ -14,7 +14,7 @@ import java.util.List;
 
 //ED-87-SA
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/user")
 @PreAuthorize("hasAnyRole('user_admin', 'edufy_realm_admin', 'user_user')")
 public class CommonController {
 
