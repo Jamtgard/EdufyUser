@@ -11,11 +11,11 @@ import java.util.List;
 public class UserMapper {
 
     //ED-86-SA
+    //ED-318-SA: removed that user can be a creator
     public static UserDTO toDTONoId(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setUsername(user.getUsername());
         userDTO.setEmail(user.getEmail());
-        userDTO.setCreator(user.isCreator());
         return userDTO;
     }
 
@@ -47,13 +47,13 @@ public class UserMapper {
     }
 
     //ED-88-AA
+    //ED-318-SA: removed that user can be a creator
     public static UserDTO toFullDTO(User user) {
         UserDTO dto = new UserDTO();
         dto.setId(user.getId());
         dto.setUuid(user.getUuid());
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
-        dto.setCreator(user.isCreator());
         dto.setActive(user.isActive());
         return dto;
     }

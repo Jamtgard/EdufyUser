@@ -23,8 +23,7 @@ public class User {
     @Column(name = "user_email", nullable = false)
     private String email;
 
-    @Column(name = "user_creator")
-    private boolean creator;
+    //ED-318-SA: removed that user can be a creator
 
     @Column(name = "user_active")
     private boolean active;
@@ -33,26 +32,25 @@ public class User {
 
     public User() {}
 
+    //ED-318-SA: removed that user can be a creator
     public User(
             String uuid,
             String username,
             String email,
-            boolean creator,
             boolean active)
     {
         this.uuid = uuid;
         this.username = username;
         this.email = email;
-        this.creator = creator;
         this.active = active;
     }
 
+    //ED-318-SA: removed that user can be a creator
     public User(
             Long id,
             String uuid,
             String username,
             String email,
-            boolean creator,
             boolean active)
 
     {
@@ -60,7 +58,6 @@ public class User {
         this.uuid = uuid;
         this.username = username;
         this.email = email;
-        this.creator = creator;
         this.active = active;
     }
 
@@ -70,7 +67,6 @@ public class User {
         this.uuid = user.uuid;
         this.username = user.username;
         this.email = user.email;
-        this.creator = user.creator;
         this.active = user.active;
     }
 
@@ -89,8 +85,7 @@ public class User {
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
 
-    public boolean isCreator() {return creator;}
-    public void setCreator(boolean creator) {this.creator = creator;}
+    //ED-318-SA: removed that user can be a creator
 
     public boolean isActive() {
         return active;}
@@ -107,7 +102,6 @@ public class User {
                 ", uuid='" + uuid + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", creator=" + creator +
                 ", active=" + active +
                 '}';
     }

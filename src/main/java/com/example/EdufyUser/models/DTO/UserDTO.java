@@ -9,7 +9,7 @@ public class UserDTO {
     private String uuid;
     private String username;
     private String email;
-    private boolean creator;
+    //ED-318-SA: removed that user can be a creator
 
     @JsonInclude(JsonInclude.Include.NON_NULL) //ED-88-AA
     private Boolean active;
@@ -17,12 +17,11 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String uuid, String username, String email, boolean creator, Boolean active) {
+    public UserDTO(Long id, String uuid, String username, String email, Boolean active) {
         this.id = id;
         this.uuid = uuid;
         this.username = username;
         this.email = email;
-        this.creator = creator;
         this.active = active;
     }
 
@@ -58,13 +57,7 @@ public class UserDTO {
         this.email = email;
     }
 
-    public boolean isCreator() {
-        return creator;
-    }
-
-    public void setCreator(boolean creator) {
-        this.creator = creator;
-    }
+    //ED-318-SA: removed that user can be a creator
 
     public Boolean getActive() {
         return active;
@@ -81,7 +74,6 @@ public class UserDTO {
                 ", uuid='" + uuid + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", creator=" + creator +
                 ", active=" + active +
                 '}';
     }
