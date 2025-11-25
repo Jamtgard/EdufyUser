@@ -94,9 +94,9 @@ public class UserServiceImpl implements UserService {
                 keycloakId,
                 createUserDTO.getUsername(),
                 createUserDTO.getEmail(),
-                createUserDTO.isCreator(),
                 active
         );
+        //ED-318-SA: removed that User can be creator
 
         User savedUser = userRepository.save(user);
 

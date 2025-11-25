@@ -8,19 +8,18 @@ public class CreateUserDTO {
     private String username;
     private String email;
     private String password;
-    private boolean creator;
     private Boolean active;
+    //ED-318-SA: removed that user can be a creator
 
     private Set<String> services;
 
     public CreateUserDTO() {
     }
 
-    public CreateUserDTO(String username, String email, String password, boolean creator, boolean active, Set<String> services) {
+    public CreateUserDTO(String username, String email, String password, boolean active, Set<String> services) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.creator = creator;
         this.active = active;
         this.services = services;
     }
@@ -43,12 +42,7 @@ public class CreateUserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-    public boolean isCreator() {
-        return creator;
-    }
-    public void setCreator(boolean creator) {
-        this.creator = creator;
-    }
+    //ED-318-SA: removed that user can be a creator
     public Boolean getActive() {
         return active;
     }
@@ -68,7 +62,6 @@ public class CreateUserDTO {
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", creator=" + creator +
                 ", active=" + active +
                 ", services=" + services +
                 '}';
