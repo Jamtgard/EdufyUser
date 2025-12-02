@@ -65,11 +65,23 @@ It runs as part of the Edufy microservice ecosystem via Docker Compose.
 
 ## 🔌 Ports
 
-- **User service:** `8686`
+#### Connections
 - **Eureka:** `8761`
 - **Gateway:** `4545`
 - **MySQL:** `3307`
+- **User:** `8686`
 - **Keycloak:** `8080`
+
+#### Media connections
+- **Creator:** `8787`
+- **Genre:** `8585`
+- **Thumb:** `8484`
+- **Utility:** `8888`
+
+#### Media services
+- **Video:** `8383`
+- **Music:** `8181`
+- **Pod:** `8282`
 
 ---
 
