@@ -2,7 +2,6 @@ package com.example.EdufyUser.models.DTO.mappers;
 
 import com.example.EdufyUser.models.DTO.UserDTO;
 import com.example.EdufyUser.models.entities.User;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,13 +54,6 @@ public class UserMapper {
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
         dto.setActive(user.isActive());
-        return dto;
-    }
-
-    //ED-340-AA
-    public static UserDTO toDTOClientCallJustSUB(User user) {
-        UserDTO dto = new UserDTO();
-        dto.setUuid(user.getUuid());
         return dto;
     }
 
